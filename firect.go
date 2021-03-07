@@ -49,6 +49,11 @@ func Default() *Logger {
 	return &logger
 }
 
+//AddHook - adds new hook to logger
+func (l *Logger) AddHook(hook Hook) {
+	l.OutHooks = append(l.OutHooks, hook)
+}
+
 //Debug - log debug message with preordered fields
 func (l *Logger) Debug(component, action, message string, data interface{}, fields map[string]interface{}) {
 	if l.Level > Debug {
