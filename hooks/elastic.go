@@ -54,8 +54,6 @@ func (h *ElasticHook) Log(fields map[string]interface{}) error {
 		return err
 	}
 	if h.User != "" {
-		fmt.Println("authorizing")
-		fmt.Println(req.Method)
 		req.Header.Set("Authorization", "Basic "+h.getBase64Auth())
 		req.Header.Set("Content-Type", "application/json")
 	}
