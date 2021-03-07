@@ -2,9 +2,12 @@ package firect
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/nightlord189/firect/hooks"
 )
+
+const timeFormat = "2006-01-02T15:04:05.000-0700"
 
 //LogLevel - enum for logging level
 type LogLevel int
@@ -58,6 +61,7 @@ func (l *Logger) Debug(component, action, message string, data interface{}, fiel
 	fields["action"] = action
 	fields["message"] = message
 	fields["data"] = data
+	fields["time"] = time.Now().Format(timeFormat)
 	fields["type"] = "Debug"
 	l.LogFields(fields)
 }
@@ -80,6 +84,7 @@ func (l *Logger) Info(component, action, message string, data interface{}, field
 	fields["action"] = action
 	fields["message"] = message
 	fields["data"] = data
+	fields["time"] = time.Now().Format(timeFormat)
 	fields["type"] = "Info"
 	l.LogFields(fields)
 }
@@ -99,6 +104,7 @@ func (l *Logger) Error(component, action, message string, data interface{}, fiel
 	fields["action"] = action
 	fields["message"] = message
 	fields["data"] = data
+	fields["time"] = time.Now().Format(timeFormat)
 	fields["type"] = "Error"
 	l.LogFields(fields)
 }
