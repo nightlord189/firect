@@ -30,7 +30,6 @@ func main() {
 	logger.AddHook(fileHook)
 	elasticHook := hooks.NewElasticHook("http://elastic.url:9200/index/log", "elastic", "password")
 	logger.AddHook(elasticHook)
-	logger.OutHooks = append(logger.OutHooks, elasticHook)
 	logger.Debug("some-server", "main", "start", nil, nil)
 }
 ```
